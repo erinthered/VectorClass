@@ -1,6 +1,9 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
 #include "Vector.h"
 
-Vector::Vector(unsigned int capacity) : size_(0), capacity_(capacity) {
+Vector::Vector(unsigned int capacity) : size_(0), capacity_(DEFAULT_CAPACITY) {
     arr_ = new int[capacity];
 }
 
@@ -8,20 +11,101 @@ Vector::~Vector() {
     delete [] arr_;
 }
 
-Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity) {
-    arr_ = new int[capacity];
-    for (int i = 0; i < size_; ++i)
-        arr_[i] = rhs.arr_[i];
+Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity_) {
+    arr_ = new int[capacity_];
 }
 
 Vector& Vector::operator =(const Vector& rhs) {
    if (capacity_ != rhs.capacity_) {
         delete [] arr_;
-        arr = new int [rhs.arr_];
+        arr_ = new int[rhs.capacity_];
     }
    
     capacity_ = rhs.capacity_;
     size_ = rhs.size_;
+    for (int i = 0; i < size_; ++i) {
+        arr_[i] = rhs.arr_[i];
+    }
+
+    return *this;
 }
 
+int& Vector::operator [](unsigned int pos) {
+    if (pos >= size_) {
+        cout << "Attempting to access an illegal index, program ending.\n";
+        exit(1);
+    }
 
+    return arr_[pos];
+}
+
+unsigned int Vector::capacity() const {
+    return capacity_;
+}
+
+unsigned int Vector::size() const {
+    return size_;
+}
+
+bool Vector::empty() const {
+    return (size_ == 0);
+}
+
+void Vector::push_back(const int& data) {
+    if (size_ == capacity_) {
+        int double_capacity = (capacity_ * 2);
+        resize(double_capacity);
+     }
+    
+    arr_[size_ + 1] = data;
+    ++size_;
+}
+
+bool Vector::remove(const int& data) {
+    if (empty())
+        return false;
+     else {
+        if (size_ != 1) {
+            for (int i = 0; i < (size_-1); ++i) {
+                arr_[i] = arr_[i+1];
+            }
+        }
+        --size_;
+        return true;     
+     }        
+}
+
+void Vector::clear() {
+    delete [] arr_;
+    arr_ = new int[DEFAULT_CAPACITY];
+    size_ = 0;
+    capacity_ = DEFAULT_CAPACITY;    
+}
+
+bool Vector::at(unsigned int pos, int& data) const {
+    if (pos >= size_)
+        return false;
+    else {
+        arr_[pos] = data;
+        return true;
+    }
+}
+
+void Vector::resize(unsigned int capacity) {
+    //Check for legal resizing
+    if (capacity < size_) {
+        cout << "Resizing to smaller capacity would result in data loss. Program ending.\n";
+        exit(1);
+    }
+
+    int* temp_arr = new int[capacity];
+    // copy information to new array with greater capacity and reassign pointer to new array
+    for (int i = 0; i < size_; ++i) {
+        temp_arr[i] = arr_[i];
+    }
+    delete [] arr_;
+    arr_ = temp_arr;
+    temp_arr = NULL;
+    
+    capacity_ = capacity;
+}
