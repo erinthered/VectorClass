@@ -18,6 +18,7 @@ public:
 	void clear();
 
 	int& operator[](unsigned int pos);
+        int operator[](unsigned int pos) const;
 	bool at(unsigned int pos, int& data) const;
 
 
@@ -29,7 +30,9 @@ private:
 	static const unsigned int DEFAULT_CAPACITY = 3;
 
 	void resize(unsigned int capacity);
-	
+
+        //returns index of data if found and -1 if not found
+        int search(const unsigned int& data);	
 };
 
 #endif

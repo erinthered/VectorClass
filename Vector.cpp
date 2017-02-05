@@ -30,12 +30,21 @@ Vector& Vector::operator =(const Vector& rhs) {
     return *this;
 }
 
-int& Vector::operator [](unsigned int pos) {
+int Vector::operator [](unsigned int pos) const {
     if (pos >= size_) {
         cout << "Attempting to access an illegal index, program ending.\n";
         exit(1);
     }
 
+    return arr_[pos];
+}
+
+int& Vector::operator [](unsigned int pos) {
+    if (pos >= size_) {
+        cout << "Attempting to access an illegal index, program ending.\n";
+        exit(1);
+    }
+    
     return arr_[pos];
 }
 
@@ -62,17 +71,15 @@ void Vector::push_back(const int& data) {
 }
 
 bool Vector::remove(const int& data) {
-    if (empty())
+    int index_of_data = search(data);
+    if (index_of_data < 0)
         return false;
-     else {
-        if (size_ != 1) {
-            for (int i = 0; i < (size_-1); ++i) {
-                arr_[i] = arr_[i+1];
-            }
-        }
+    else {
+        for (int i = index_of_data; i < (size_-1); ++i)
+            arr_[i] = arr_[i+1];
         --size_;
         return true;     
-     }        
+    }         
 }
 
 void Vector::clear() {
@@ -109,3 +116,11 @@ void Vector::resize(unsigned int capacity) {
     
     capacity_ = capacity;
 }
+
+int Vector::search(const unsigned int& data) {
+    for (int index = 0; index < size_; ++index)
+        if (arr_[index] == data)
+            return index;
+    return -1;
+}
+

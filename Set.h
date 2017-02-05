@@ -5,6 +5,9 @@
 
 class Set {
 public:
+        Set();
+        ~Set();
+ 
 	unsigned int size() const;
 	bool empty() const;
 	
