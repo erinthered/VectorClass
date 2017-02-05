@@ -13,6 +13,9 @@ Vector::~Vector() {
 
 Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity_) {
     arr_ = new int[capacity_];
+    for (int i = 0; i < size_-1; ++i) {
+        arr_[i] = rhs.arr_[i];
+    }
 }
 
 Vector& Vector::operator =(const Vector& rhs) {
@@ -66,7 +69,7 @@ void Vector::push_back(const int& data) {
         resize(double_capacity);
      }
     
-    arr_[size_ + 1] = data;
+    arr_[size_] = data;
     ++size_;
 }
 
@@ -93,7 +96,7 @@ bool Vector::at(unsigned int pos, int& data) const {
     if (pos >= size_)
         return false;
     else {
-        arr_[pos] = data;
+        data = arr_[pos];
         return true;
     }
 }
