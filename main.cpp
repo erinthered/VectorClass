@@ -16,7 +16,7 @@ int main() {
 	//Testing Push Back
 	aVec.push_back(5);
 	aVec.push_back(3);
-	
+
 	assert(aVec.size() == 2);
 	assert(!aVec.empty());
 
@@ -39,7 +39,7 @@ int main() {
 	assert(vectorC.size() == 2);
 	assert(vectorB[0] == 5);
 	assert(vectorC[0] == 5);
-
+    
 	//Testing Remove
 	assert(!vectorC.remove(10));
 	vectorC.push_back(5);
@@ -63,7 +63,6 @@ int main() {
 	//Testing Clear
 	aVec.clear();
 	assert(aVec.empty());
-
 
 	//Testing Set Construction
 	Set aSet;

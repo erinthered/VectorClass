@@ -18,9 +18,10 @@ bool Set::empty() const {
 bool Set::contains(const int& data) const {
     bool contains_data = false;
     for (int i = 0; i < vector_.size(); ++i) {
-        if (data == vector_[i])
+        if (data == vector_[i]) {
             contains_data = true;
-            break;
+            return contains_data;
+        }
     } 
     return contains_data;
 }

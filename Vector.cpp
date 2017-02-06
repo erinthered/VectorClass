@@ -13,7 +13,7 @@ Vector::~Vector() {
 
 Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity_) {
     arr_ = new int[capacity_];
-    for (int i = 0; i < size_-1; ++i) {
+    for (int i = 0; i < size_; ++i) {
         arr_[i] = rhs.arr_[i];
     }
 }
@@ -74,12 +74,13 @@ void Vector::push_back(const int& data) {
 }
 
 bool Vector::remove(const int& data) {
-    int index_of_data = search(data);
+    int index_of_data = search(data); 
     if (index_of_data < 0)
         return false;
     else {
-        for (int i = index_of_data; i < (size_-1); ++i)
+        for (int i = index_of_data; i <= (size_-1); ++i) {
             arr_[i] = arr_[i+1];
+        }
         --size_;
         return true;     
     }         
