@@ -1,3 +1,15 @@
+/******************************************************************
+Title:           main.cpp
+Author:          Erin Williams
+Date Created:    2/4/2017
+Class:           Spring 2017, CSCI 235-04, Mon & Wed 7:15pm-8:15pm
+Professor:       Aarsh Vora
+Purpose:         Assignment #1
+Description:     Main driver program provided, nothing changed.
+                 Tests header and implementation files for 
+                 Vector and Set classes.
+******************************************************************/
+
 #include <iostream>
 #include <assert.h>
 

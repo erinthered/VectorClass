@@ -1,6 +1,18 @@
+/**********************************************************************
+Title:          Vector.cpp
+Author:         Erin Williams
+Date Created:   2/4/2016
+Class:          Spring 2017, CSCI 235-04, Mon & Wed 7:00pm-6:50pm
+Professor:      Aarsh Vora
+Purpose:        Assignment #1
+Description:    Implementation file for Vector Class. See Description
+                in Vector.h for member function and variable descriptions
+                and comments below for details.
+***********************************************************************/
+
 #include <iostream>
 #include <cstdlib>
-using namespace std;
+
 #include "Vector.h"
 
 Vector::Vector(unsigned int capacity) : size_(0), capacity_(DEFAULT_CAPACITY) {
@@ -35,7 +47,7 @@ Vector& Vector::operator =(const Vector& rhs) {
 
 int Vector::operator [](unsigned int pos) const {
     if (pos >= size_) {
-        cout << "Attempting to access an illegal index, program ending.\n";
+        std::cout << "Attempting to access an illegal index, program ending.\n";
         exit(1);
     }
 
@@ -44,7 +56,7 @@ int Vector::operator [](unsigned int pos) const {
 
 int& Vector::operator [](unsigned int pos) {
     if (pos >= size_) {
-        cout << "Attempting to access an illegal index, program ending.\n";
+        std::cout << "Attempting to access an illegal index, program ending.\n";
         exit(1);
     }
     
@@ -105,7 +117,7 @@ bool Vector::at(unsigned int pos, int& data) const {
 void Vector::resize(unsigned int capacity) {
     //Check for legal resizing
     if (capacity < size_) {
-        cout << "Resizing to smaller capacity would result in data loss. Program ending.\n";
+        std::cout << "Resizing to smaller capacity would result in data loss. Program ending.\n";
         exit(1);
     }
 

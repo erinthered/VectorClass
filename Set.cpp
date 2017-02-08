@@ -1,3 +1,15 @@
+/**********************************************************************
+Title:              Set.cpp
+Author:             Erin Williams
+Date Created:       2/4/17
+Class:              Spring 2017, CSCI 235-04, Mon & Wed 7:00pm-8:15pm
+Professor:          Aarsh Vora
+Purpose:            Assignment #1
+Description:        Implementation file for the Set class. See Set.h
+                    for description of class functions and comments
+                    below for details.
+**********************************************************************/
+
 #include "set.h"
 #include "vector.h"
 
