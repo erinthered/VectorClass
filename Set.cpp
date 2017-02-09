@@ -30,8 +30,8 @@ bool Set::empty() const {
 bool Set::contains(const int& data) const {
     bool contains_data = false;
     for (int i = 0; i < vector_.size(); ++i) {
-        if (data == vector_[i]) {
-            contains_data = true;
+        if (data == vector_[i]) {             //search Vector for data
+            contains_data = true;             //if found, return true
             return contains_data;
         }
     } 
@@ -39,19 +39,21 @@ bool Set::contains(const int& data) const {
 }
 
 bool Set::insert(const int& data) {
+    //If data does not already exist in Set, add data to Set.
     if (empty() || !(contains(data))) {
         vector_.push_back(data);
         return true;
     } 
-    else
+    else                
         return false;
 }
 
 bool Set::remove(const int& data) {
+    //If data does not exist, return false
     if (empty() || !(contains(data)))
         return false;
     else {
-        vector_.remove(data);
+        vector_.remove(data);          //Remove data from Set
         return true;
     }
 }

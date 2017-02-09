@@ -25,18 +25,28 @@ class Set {
 public:
 	Set();
         ~Set();
+      
+        //Return number of elements in the Set
         unsigned int size() const;
+        //Return true if there are no elements in the Set, false otherwise
 	bool empty() const;
 	
+        //Determines if a particular element, data, exists in the Set.
+        //Returns true if a match for data is found, false if not found.
 	bool contains(const int& data) const;
-		
+        //Determines if a particular element, data, exists in the Set.
+        //If it does not already exist, data is added to the next position
+        //in the Set and returns true, otherwise the element is not added and
+        //returns false.		
 	bool insert(const int& data);
+        //If an element, data, is found in the Set, it is removed and returns
+        //true, if data is not found, returns false.
 	bool remove(const int& data);
-
+        //Removes all elements from the Set.
 	void clear();
 
 private:
-	Vector vector_;
+	Vector vector_;    //Stores Set data
 
 };
 
