@@ -23,9 +23,9 @@ Description:    Header file for Set Class. Set is a class that
 
 class Set {
 public:
-        Set();
+	Set();
         ~Set();
-	unsigned int size() const;
+        unsigned int size() const;
 	bool empty() const;
 	
 	bool contains(const int& data) const;
