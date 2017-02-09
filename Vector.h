@@ -83,7 +83,9 @@ private:
         //Terminates program with error message to output stream if position is not valid
         void checkLegalPosition(unsigned int pos);
         //Overloaded function with const to be used in overloaded [] const function
-        void checkLegalPosition(unsigned int pos) const;        
+        void checkLegalPosition(unsigned int pos) const;
+        //Swap function for Vectors, used by resize
+        void swap(unsigned int capacity);        
 };
 
 #endif

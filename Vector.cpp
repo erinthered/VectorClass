@@ -118,15 +118,15 @@ void Vector::resize(unsigned int capacity) {
     //check for potential data loss
     checkLegalCapacity(capacity);     
 
-    int* temp_arr = new int[capacity];
+//    int* temp_arr = new int[capacity];
     // copy information to new array with greater capacity and reassign pointer to new array
-    for (int i = 0; i < size_; ++i) {
-        temp_arr[i] = arr_[i];
-    }
-    delete [] arr_;
-    arr_ = temp_arr;
-    temp_arr = NULL;
-    
+//    for (int i = 0; i < size_; ++i) {
+//        temp_arr[i] = arr_[i];
+//    }
+//    delete [] arr_;
+//    arr_ = temp_arr;
+//    temp_arr = NULL;
+    swap(capacity);  
     capacity_ = capacity;
 }
 
@@ -159,3 +159,12 @@ void Vector::checkLegalPosition(unsigned int pos) const {
     } 
 }
 
+void Vector::swap(unsigned int capacity) {
+    int* temp_arr = new int[capacity];
+    //Copy information to new array with greater capacity and reassign pointer to new array
+    for (int i = 0; i < size_; ++i)
+        temp_arr[i] = arr_[i];
+    delete [] arr_;
+    arr_ = temp_arr;
+    temp_arr = NULL;
+}
