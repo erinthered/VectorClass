@@ -10,8 +10,8 @@ Description:        Implementation file for the Set class. See Set.h
                     below for details.
 **********************************************************************/
 
-#include "set.h"
-#include "vector.h"
+#include "Set.h"
+#include "Vector.h"
 
 Set::Set() {
     vector_ = Vector(3);
@@ -29,7 +29,7 @@ bool Set::empty() const {
 
 bool Set::contains(const int& data) const {
     bool contains_data = false;
-    for (int i = 0; i < vector_.size(); ++i) {
+    for (unsigned int i = 0; i < vector_.size(); ++i) {
         if (data == vector_[i]) {             //search Vector for data
             contains_data = true;             //if found, return true
             return contains_data;
