@@ -115,18 +115,9 @@ bool Vector::at(unsigned int pos, int& data) const {
 }
 
 void Vector::resize(unsigned int capacity) {
-    //check for potential data loss
-    checkLegalCapacity(capacity);     
+    checkLegalCapacity(capacity);       //check for potential data loss     
 
-//    int* temp_arr = new int[capacity];
-    // copy information to new array with greater capacity and reassign pointer to new array
-//    for (int i = 0; i < size_; ++i) {
-//        temp_arr[i] = arr_[i];
-//    }
-//    delete [] arr_;
-//    arr_ = temp_arr;
-//    temp_arr = NULL;
-    swap(capacity);  
+    swap(capacity);                     //create new array of size capacity  
     capacity_ = capacity;
 }
 

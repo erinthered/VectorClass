@@ -1,6 +1,3 @@
-#ifndef __CS235_VECTOR_H_
-#define __CS235_VECTOR_H_
-
 /********************************************************************
 Title:           Vector.h
 Author:          Erin Williams
@@ -23,6 +20,9 @@ Description:     Header file for Vector class. Contains a constructor
                  dynamic array and integer values of the current size
                  and capacity of the array/Vector.
 ***********************************************************************/ 
+
+#ifndef __CS235_VECTOR_H_
+#define __CS235_VECTOR_H_
 
 class Vector {
 public:
