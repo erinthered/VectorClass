@@ -29,7 +29,7 @@ public:
 	Vector(unsigned int capacity = DEFAULT_CAPACITY);
 	~Vector();
 	Vector(const Vector& rhs);             //Copy constructor
-	Vector& operator=(const Vector& rhs);
+	Vector& operator=(const Vector& rhs);  //Overloaded = operator
 
         //Returns the size of the space currently allocated for the Vector
 	unsigned int capacity() const;

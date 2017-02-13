@@ -25,11 +25,9 @@ Vector::~Vector() {
 }
 
 Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity_) {
-    if (&arr_ != &rhs.arr_) {      //check for same array
-        arr_ = new int[capacity_];
-        for (unsigned int i = 0; i < size_; ++i) {
-            arr_[i] = rhs.arr_[i];           //copy data to new Vector
-        }
+    arr_ = new int[capacity_];
+    for (int i = 0; i < size_; ++i) {
+        arr_[i] = rhs.arr_[i];           //copy data to new Vector
     }
 }
 
@@ -41,7 +39,7 @@ Vector& Vector::operator =(const Vector& rhs) {
         arr_ = new int[rhs.capacity_];
         capacity_ = rhs.capacity_;
         size_ = rhs.size_;
-        for (unsigned int i = 0; i < size_; ++i) {
+        for (int i = 0; i < size_; ++i) {
             arr_[i] = rhs.arr_[i];
         }
         return *this;
@@ -122,7 +120,7 @@ void Vector::resize(unsigned int capacity) {
 }
 
 int Vector::search(const unsigned int& data) {
-    for (unsigned int index = 0; index < size_; ++index)
+    for (int index = 0; index < size_; ++index)
         if (arr_[index] == data)
             return index;
     return -1;
@@ -132,7 +130,7 @@ void Vector::checkLegalCapacity(const unsigned int& capacity) {
     //checks that requested resizing is larger than current size of used array
     if (capacity < size_) {
         std::cout << "Resizing to smaller capacity would result in data loss. Program ending.\n";
-        exit(1);
+        std::exit(1);
     }
 }
 
@@ -153,7 +151,7 @@ void Vector::checkLegalPosition(unsigned int pos) const {
 void Vector::swap(unsigned int capacity) {
     int* temp_arr = new int[capacity];
     //Copy information to new array with greater capacity and reassign pointer to new array
-    for (unsigned int i = 0; i < size_; ++i)
+    for (int i = 0; i < size_; ++i)
         temp_arr[i] = arr_[i];
     delete [] arr_;
     arr_ = temp_arr;
