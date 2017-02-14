@@ -17,15 +17,18 @@ There are no known bugs, and hopefully no unknown bugs.
 
 Two classes are included in this project: a Vector class and a Set class. The Vector
 class is a data structure to store integer values, which doubles it's capacity when
-a user attempts to add additional data to a Vector that has reached capacity. The Set
-class uses the Vector class as its underlying data structure to create a collection 
-of unique integer values.
+a user attempts to add additional data to a Vector that has reached capacity. A user can
+add one integer value at a time to a Vector and remove existing data one integer at a time.
+The Set class uses the Vector class as its underlying data structure to create a collection 
+of unique integer values. Like the Vector class, data can be added and removed one integer
+at a time. Both classes have the ability to remove all data and reset to a default empty
+Vector with a capacity of three.
 
 Notable algorithms in Vector Class:
 ~ Copy Constructor: Create a new dynamic array and copy each integer from index 0
   through index N-1, where N = the size of the used elements of the array.
-~ Overloaded = operator: Check that the LHS array is not the same as the RHS array.
-  If they are not the same, delete the data stored in the LHS array and create a new
+~ Overloaded = operator: Check that the LHS array capacity is not the same as the RHS.
+  If they are not the same, free the memory used by the LHS array and create a new
   dynamic array with the same capacity as the RHS array. Copy all member variables from
   RHS array to LHS array and copy each integer from RHS array from index 0 through index
   N-1, where N = the size of the used elements of the RHS array. Return pointer to LHS array.
@@ -36,7 +39,7 @@ Notable algorithms in Vector Class:
   larger than current size of array to prevent data loss. End program if checkLegalCapacity 
   fails, else use swap function to move all data from old array to new array of resized capacity.
 ~ Swap function: Create new dynamic array of requested capacity size, copy data from existing
-  array to new array, delete data from old array, reassign old array pointer to new array, set
+  array to new array, free memory from old array, reassign old array pointer to new array, set
   new array pointer to NULL.
 ~ Remove function: Use search function to determine if array contains the requested data. If 
   not found, return false. If found, move all one position forward in the array, from the position

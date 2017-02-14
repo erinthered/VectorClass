@@ -32,18 +32,17 @@ Vector::Vector(const Vector& rhs) : size_(rhs.size_), capacity_(rhs.capacity_) {
 }
 
 Vector& Vector::operator =(const Vector& rhs) {
-   if (&arr_ == &rhs.arr_)         //check for same array
-        return *this;
-    else {
-        delete [] arr_;
+    if (capacity_ != rhs.capacity_) {   //no need for new array if same capacity
+        delete [] arr_;                 //also protects setting array = to itself
         arr_ = new int[rhs.capacity_];
-        capacity_ = rhs.capacity_;
-        size_ = rhs.size_;
-        for (int i = 0; i < size_; ++i) {
-            arr_[i] = rhs.arr_[i];
-        }
-        return *this;
     }
+
+    capacity_ = rhs.capacity_;
+    size_ = rhs.size_;
+    for (int i = 0; i < size_; ++i) {
+        arr_[i] = rhs.arr_[i];
+    }
+    return *this;
 }
 
 int Vector::operator [](unsigned int pos) const {
